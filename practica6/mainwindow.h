@@ -43,6 +43,7 @@ private slots:
     void on_senal_clicked();
 
 private:
+    void VerificarSiHayColosionOBjetoPlaneta();
     int GenerarPosicionAleatoria();
     Ui::MainWindow *ui;
     QTimer *timer;              //timer para los intervalos de tiempo entre cada frame
