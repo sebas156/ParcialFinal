@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>inicializarvalores</class>
+ <widget class="QWidget" name="inicializarvalores">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>362</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>290</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>ACEPTAR</string>
+   </property>
+  </widget>
+  <widget class="QSplitter" name="splitter">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>40</y>
+     <width>281</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <widget class="QLabel" name="label">
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Planeta </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="ContadorPlaneta">
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QSplitter" name="splitter_8">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>100</y>
+     <width>321</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+   <widget class="QSplitter" name="splitter_2">
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <widget class="QLabel" name="PosX">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Posicion en X:</string>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="VPosX">
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>23</height>
+      </size>
+     </property>
+     <property name="minimum">
+      <double>-1000.000000000000000</double>
+     </property>
+     <property name="maximum">
+      <double>1000.000000000000000</double>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QSplitter" name="splitter_3">
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <widget class="QLabel" name="PosY">
+     <property name="maximumSize">
+      <size>
+       <width>167</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Posicion en Y: </string>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="VPosY">
+     <property name="minimum">
+      <double>-1000.000000000000000</double>
+     </property>
+     <property name="maximum">
+      <double>1000.000000000000000</double>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QSplitter" name="splitter_5">
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <widget class="QLabel" name="VelX">
+     <property name="maximumSize">
+      <size>
+       <width>167</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Velocidad en X: </string>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="VVX">
+     <property name="minimum">
+      <double>-1000.000000000000000</double>
+     </property>
+     <property name="maximum">
+      <double>1000.000000000000000</double>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QSplitter" name="splitter_4">
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <widget class="QLabel" name="VelY">
+     <property name="maximumSize">
+      <size>
+       <width>167</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Velociodad en Y: </string>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="VVY">
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>23</height>
+      </size>
+     </property>
+     <property name="minimum">
+      <double>-1000.000000000000000</double>
+     </property>
+     <property name="maximum">
+      <double>1000.000000000000000</double>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QSplitter" name="splitter_6">
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <widget class="QLabel" name="Masa">
+     <property name="minimumSize">
+      <size>
+       <width>167</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Masa planeta: </string>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="MP">
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>23</height>
+      </size>
+     </property>
+     <property name="maximum">
+      <double>99999999999.000000000000000</double>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QSplitter" name="splitter_7">
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <widget class="QLabel" name="Radio">
+     <property name="minimumSize">
+      <size>
+       <width>167</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Radio planeta: </string>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="RP">
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>23</height>
+      </size>
+     </property>
+     <property name="maximum">
+      <double>9999999999.000000000000000</double>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
