@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    srand(time(NULL));
     setWindowTitle("SIMULACION");
     CuantosPlanetas = new NumeroPlanetas();
     ValoresIniciales = new inicializarvalores();
@@ -21,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     h_limit=12000;                   //Asigna el tamaño de la interfaz
     v_limit=12000;
     timer=new QTimer(this);                 //crea el timer
+    timerCuerpos=new QTimer(this);
     scene=new QGraphicsScene(this);         //crea la scene
     scene->setSceneRect(-6000,-6000,h_limit,v_limit);
     ui->graphicsView->setScene(scene);
@@ -34,6 +36,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ValoresIniciales,SIGNAL(buttonPressed()),this,SLOT(EstablecerValoresIniciales()));
     connect(timer,SIGNAL(timeout()),this,SLOT(actualizar()));
     timer->start(20);
+    connect(timerCuerpos,SIGNAL(timeout()),this,SLOT(ActualizarCuerposCayendo()));
+    timerCuerpos->start(20);
 }
 
 MainWindow::~MainWindow()
@@ -134,10 +138,13 @@ void MainWindow::AumentarIterador()
 
 void MainWindow::ActualizarCuerposCayendo()
 {
+    if(SistemaSolar.size()<1)
+        return;
     for(int i=0;i<ObjetosCayendoActualmente.size();i++){
 
-        ObjetosCayendoActualmente.at(i)->actualizar(v_limit);//actualiza en esferagraf
+        ObjetosCayendoActualmente.at(i)->actualizar(SistemaSolar.at(PlanetReference)->getPlanet()->get_posY()-200);//actualiza en esferagraf
         bordercollision(ObjetosCayendoActualmente.at(i)->getEsf());//actualiza el choque con el borde
+        qDebug()<<ObjetosCayendoActualmente.at(i)->getEsf()->get_posX()<<ObjetosCayendoActualmente.at(i)->getEsf()->get_posX();
     }
 }
 
@@ -201,7 +208,6 @@ void MainWindow::on_senal_clicked()
 
 int MainWindow::GenerarPosicionAleatoria()
 {
-    srand(time(NULL));
     int PosicionLimite=SistemaSolar.at(PlanetReference)->getPlanet()->get_posX()-500 ;
     int posicionAparacer=PosicionLimite +rand()%( PosicionLimite+1000 -1);
     return posicionAparacer;
@@ -209,18 +215,18 @@ int MainWindow::GenerarPosicionAleatoria()
 
 void MainWindow::bordercollision(cuerpo *b)//son los choques con los bordes
 {
-    if(b->get_posX()<SistemaSolar.at(PlanetReference)->getPlanet()->get_posX()-500){
+    if(b->get_posX()<SistemaSolar.at(PlanetReference)->getPlanet()->get_posX()-200){
         b->set_vel(-1*b->get_e()*b->get_velX(),b->get_velY(), b->get_Radio(), b->get_posY()) ;//con el borde izquierdo
 
     }
-    if(b->get_posX()>SistemaSolar.at(PlanetReference)->getPlanet()->get_posX()+500){//posicion con el borde derecho.
+    if(b->get_posX()>SistemaSolar.at(PlanetReference)->getPlanet()->get_posX()+200){//posicion con el borde derecho.
         b->set_vel(-1*b->get_e()*b->get_velX(),b->get_velY(), h_limit-b->get_Radio(), b->get_posY());
     }
-    if(b->get_posY()<SistemaSolar.at(PlanetReference)->getPlanet()->get_posY()-500){//choque con el borde superior.
+    if(b->get_posY()<SistemaSolar.at(PlanetReference)->getPlanet()->get_posY()-200){//choque con el borde superior.
         b->set_vel(b->get_velX(),-1*b->get_e()*b->get_velY(), (b->get_posX()), b->get_Radio());
     }
     if(b->get_posY()>SistemaSolar.at(PlanetReference)->getPlanet()->get_posY()+500){//choque con el borde inferior.
-        b->set_vel(b->get_velX(),-1*b->get_e()*b->get_velY(), b->get_posX(), v_limit-b->get_Radio());
+        b->set_vel(b->get_velX(),-1*b->get_e()*b->get_velY(), b->get_posX(), SistemaSolar.at(PlanetReference)->getPlanet()->get_posY()-b->get_Radio());
     }
 }
 
@@ -230,7 +236,11 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         QMessageBox::warning(this,"INVALIDO", "No se pueden generar objeto cayendo si no hay planetas disponibles");
         return;
     }
+    float AceleracionAleatoria = static_cast <float> (rand()) / static_cast <float> (RAND_MAX); // Va a generar numeros aleatoris entre 0.0 y 1.0, para la aceleracion en Y.
+    AceleracionAleatoria*=-1;
+    qDebug()<<"Se creo objeto cayendo";
     cuerpograf *AuxCuerpo;
-    AuxCuerpo=new cuerpograf(GenerarPosicionAleatoria(),SistemaSolar.at(PlanetReference)->getPlanet()->get_posY()-500);
+    AuxCuerpo=new cuerpograf(GenerarPosicionAleatoria(),SistemaSolar.at(PlanetReference)->getPlanet()->get_posY()-500, AceleracionAleatoria );
+    scene->addItem(AuxCuerpo);
     ObjetosCayendoActualmente.push_back(AuxCuerpo);
 }

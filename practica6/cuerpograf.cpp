@@ -7,7 +7,7 @@ cuerpograf::cuerpograf(float posx,float posy, float ay) : escala(1) //consrucyor
 {
     float velx , vely ,r, mass, K, e, Ay;
     r = 10;
-    Ay=ay
+    Ay=ay;
     mass = 50;
     velx = 0;
     vely = 0;
@@ -39,7 +39,7 @@ void cuerpograf::setEscala(float s)
 
 void cuerpograf::actualizar(float v_lim)
 {
-    esf->actualizar();//actualiza las posiciones del cuerpo
+    esf->actualizar(); //actualiza las posiciones del cuerpo
     setPos(esf->get_posX(),(v_lim-esf->get_posY()));// actualiza posiciones en la interfaz
 }
 
