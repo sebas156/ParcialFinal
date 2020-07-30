@@ -15,6 +15,7 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget); //define como se pintara el objeto
     void setEscala(float s);
     void actualizar(float v_lim);
+    void CambiarColor();
     cuerpo* getEsf();
 private:
     cuerpo* esf;

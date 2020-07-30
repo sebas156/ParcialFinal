@@ -143,6 +143,7 @@ void MainWindow::ActualizarCuerposCayendo()
     for(int i=0;i<ObjetosCayendoActualmente.size();i++){
 
         ObjetosCayendoActualmente.at(i)->actualizar(SistemaSolar.at(PlanetReference)->getPlanet()->get_posY()-200);//actualiza en esferagraf
+        VerificarSiHayColosionOBjetoPlaneta();
         bordercollision(ObjetosCayendoActualmente.at(i)->getEsf());//actualiza el choque con el borde
         qDebug()<<ObjetosCayendoActualmente.at(i)->getEsf()->get_posX()<<ObjetosCayendoActualmente.at(i)->getEsf()->get_posX();
     }
@@ -206,7 +207,7 @@ void MainWindow::on_senal_clicked()
     AumentarIterador();
 }
 
-bool MainWindow::VerificarSiHayColosionOBjetoPlaneta()
+void MainWindow::VerificarSiHayColosionOBjetoPlaneta()
 {
     QList<cuerpograf*>::iterator borrar=ObjetosCayendoActualmente.begin();
     for(int i=0; i<ObjetosCayendoActualmente.size();i++){
