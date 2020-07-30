@@ -3,7 +3,7 @@
 #include <cmath>
 
 
-cuerpo::cuerpo(float posX_, float posY_, float velX_, float velY_, float masa_, float radio_, float K_, float e_)
+cuerpo::cuerpo(float posX_, float posY_, float velX_, float velY_, float masa_, float radio_, float K_, float e_, float AY_)
 {
     PX = posX_;
     PY = posY_;
@@ -12,7 +12,7 @@ cuerpo::cuerpo(float posX_, float posY_, float velX_, float velY_, float masa_, 
     VX = velX_;
     VY = velY_;
     AX = 0;
-    AY = 0;
+    AY = AY_;
     G = 9.8;
     K = K_;
     e = e_;

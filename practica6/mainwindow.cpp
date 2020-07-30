@@ -25,7 +25,10 @@ MainWindow::MainWindow(QWidget *parent) :
     scene->setSceneRect(-6000,-6000,h_limit,v_limit);
     ui->graphicsView->setScene(scene);
     scene->addRect(scene->sceneRect());
-    ui->graphicsView->resize(scene->width(),scene->height());
+    ui->graphicsView->resize(1200,1200);
+    ui->graphicsView->setHorizontalScrollBarPolicy ( Qt :: ScrollBarAlwaysOff  ) ;
+    ui->graphicsView->setVerticalScrollBarPolicy ( Qt :: ScrollBarAlwaysOff  ) ;
+    qDebug()<< ui->graphicsView->size();
     this->resize(1000, 600);
     connect(CuantosPlanetas,SIGNAL(buttonPressed()),this,SLOT(AsignarNumeroPlanetas()));
     connect(ValoresIniciales,SIGNAL(buttonPressed()),this,SLOT(EstablecerValoresIniciales()));
@@ -129,6 +132,15 @@ void MainWindow::AumentarIterador()
     IteradorMostrar+=1;
 }
 
+void MainWindow::ActualizarCuerposCayendo()
+{
+    for(int i=0;i<ObjetosCayendoActualmente.size();i++){
+
+        ObjetosCayendoActualmente.at(i)->actualizar(v_limit);//actualiza en esferagraf
+        bordercollision(ObjetosCayendoActualmente.at(i)->getEsf());//actualiza el choque con el borde
+    }
+}
+
 
 void MainWindow::VerificarSiSeColisiona(int fila) // Veriffica las colisiones entre planetas.
 {
@@ -185,4 +197,40 @@ string Convert (float number){
 void MainWindow::on_senal_clicked()
 {
     AumentarIterador();
+}
+
+int MainWindow::GenerarPosicionAleatoria()
+{
+    srand(time(NULL));
+    int PosicionLimite=SistemaSolar.at(PlanetReference)->getPlanet()->get_posX()-500 ;
+    int posicionAparacer=PosicionLimite +rand()%( PosicionLimite+1000 -1);
+    return posicionAparacer;
+}
+
+void MainWindow::bordercollision(cuerpo *b)//son los choques con los bordes
+{
+    if(b->get_posX()<SistemaSolar.at(PlanetReference)->getPlanet()->get_posX()-500){
+        b->set_vel(-1*b->get_e()*b->get_velX(),b->get_velY(), b->get_Radio(), b->get_posY()) ;//con el borde izquierdo
+
+    }
+    if(b->get_posX()>SistemaSolar.at(PlanetReference)->getPlanet()->get_posX()+500){//posicion con el borde derecho.
+        b->set_vel(-1*b->get_e()*b->get_velX(),b->get_velY(), h_limit-b->get_Radio(), b->get_posY());
+    }
+    if(b->get_posY()<SistemaSolar.at(PlanetReference)->getPlanet()->get_posY()-500){//choque con el borde superior.
+        b->set_vel(b->get_velX(),-1*b->get_e()*b->get_velY(), (b->get_posX()), b->get_Radio());
+    }
+    if(b->get_posY()>SistemaSolar.at(PlanetReference)->getPlanet()->get_posY()+500){//choque con el borde inferior.
+        b->set_vel(b->get_velX(),-1*b->get_e()*b->get_velY(), b->get_posX(), v_limit-b->get_Radio());
+    }
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    if(SistemaSolar.size()<1){
+        QMessageBox::warning(this,"INVALIDO", "No se pueden generar objeto cayendo si no hay planetas disponibles");
+        return;
+    }
+    cuerpograf *AuxCuerpo;
+    AuxCuerpo=new cuerpograf(GenerarPosicionAleatoria(),SistemaSolar.at(PlanetReference)->getPlanet()->get_posY()-500);
+    ObjetosCayendoActualmente.push_back(AuxCuerpo);
 }

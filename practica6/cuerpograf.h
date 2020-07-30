@@ -5,13 +5,11 @@
 #include <QGraphicsItem>
 #include <QGraphicsScene>
 #include "cuerpo.h"
-#include <stdlib.h>     /* srand, rand, abs */
-#include <time.h>       /* time */
 
 class cuerpograf: public QGraphicsItem
 {
 public:
-    cuerpograf();
+    cuerpograf(float,float,float);
     ~cuerpograf();
     QRectF boundingRect() const;    //necesario definirla, devuelve el rectangulo que encierra el objeto
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget); //define como se pintara el objeto

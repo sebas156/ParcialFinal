@@ -23,6 +23,41 @@
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="0" colspan="2">
+       <widget class="QSplitter" name="splitter_9">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QPushButton" name="start">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>26</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>START</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="senal">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>26</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>PLANETAS</string>
+         </property>
+        </widget>
+       </widget>
+      </item>
       <item row="0" column="0">
        <widget class="QSplitter" name="splitter_8">
         <property name="sizePolicy">
@@ -34,20 +69,14 @@
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
-        <widget class="QWidget" name="">
+        <widget class="QWidget" name="layoutWidget">
          <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="0">
-           <widget class="QSplitter" name="splitter">
+          <item row="3" column="0">
+           <widget class="QSplitter" name="splitter_4">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
-            <widget class="QLabel" name="label">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
+            <widget class="QLabel" name="label_7">
              <property name="maximumSize">
               <size>
                <width>120</width>
@@ -55,20 +84,20 @@
               </size>
              </property>
              <property name="text">
-              <string>PLANETA:</string>
+              <string>VELX:              </string>
              </property>
             </widget>
-            <widget class="QLabel" name="PA">
+            <widget class="QLabel" name="VXA">
              <property name="minimumSize">
               <size>
-               <width>63</width>
+               <width>68</width>
                <height>23</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
                <width>120</width>
-               <height>23</height>
+               <height>16777215</height>
               </size>
              </property>
              <property name="text">
@@ -112,12 +141,21 @@
             </widget>
            </widget>
           </item>
-          <item row="2" column="0">
-           <widget class="QSplitter" name="splitter_3">
+          <item row="7" column="0">
+           <widget class="QLCDNumber" name="lcdNumber"/>
+          </item>
+          <item row="0" column="0">
+           <widget class="QSplitter" name="splitter">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
-            <widget class="QLabel" name="label_5">
+            <widget class="QLabel" name="label">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="maximumSize">
               <size>
                <width>120</width>
@@ -125,10 +163,45 @@
               </size>
              </property>
              <property name="text">
-              <string>POSY:             </string>
+              <string>PLANETA:</string>
              </property>
             </widget>
-            <widget class="QLabel" name="PYA">
+            <widget class="QLabel" name="PA">
+             <property name="minimumSize">
+              <size>
+               <width>63</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>120</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QSplitter" name="splitter_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <widget class="QLabel" name="label_13">
+             <property name="maximumSize">
+              <size>
+               <width>120</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>AY:                 </string>
+             </property>
+            </widget>
+            <widget class="QLabel" name="AYA">
              <property name="minimumSize">
               <size>
                <width>68</width>
@@ -147,12 +220,12 @@
             </widget>
            </widget>
           </item>
-          <item row="3" column="0">
-           <widget class="QSplitter" name="splitter_4">
+          <item row="2" column="0">
+           <widget class="QSplitter" name="splitter_3">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
-            <widget class="QLabel" name="label_7">
+            <widget class="QLabel" name="label_5">
              <property name="maximumSize">
               <size>
                <width>120</width>
@@ -160,10 +233,10 @@
               </size>
              </property>
              <property name="text">
-              <string>VELX:              </string>
+              <string>POSY:             </string>
              </property>
             </widget>
-            <widget class="QLabel" name="VXA">
+            <widget class="QLabel" name="PYA">
              <property name="minimumSize">
               <size>
                <width>68</width>
@@ -252,44 +325,6 @@
             </widget>
            </widget>
           </item>
-          <item row="6" column="0">
-           <widget class="QSplitter" name="splitter_7">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <widget class="QLabel" name="label_13">
-             <property name="maximumSize">
-              <size>
-               <width>120</width>
-               <height>23</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>AY:                 </string>
-             </property>
-            </widget>
-            <widget class="QLabel" name="AYA">
-             <property name="minimumSize">
-              <size>
-               <width>68</width>
-               <height>23</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>120</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </widget>
-          </item>
-          <item row="7" column="0">
-           <widget class="QLCDNumber" name="lcdNumber"/>
-          </item>
          </layout>
         </widget>
        </widget>
@@ -302,41 +337,6 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-       </widget>
-      </item>
-      <item row="1" column="0" colspan="2">
-       <widget class="QSplitter" name="splitter_9">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QPushButton" name="start">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>26</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>START</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="senal">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>26</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>PLANETAS</string>
-         </property>
-        </widget>
        </widget>
       </item>
      </layout>
@@ -355,7 +355,7 @@
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
-    <enum>RightToolBarArea</enum>
+    <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
     <bool>false</bool>

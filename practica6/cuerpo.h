@@ -5,7 +5,7 @@
 class cuerpo
 {
 public:
-    cuerpo(float posX_, float posY_, float velX_, float velY_, float masa_, float radio_, float K_, float e_);
+    cuerpo(float posX_, float posY_, float velX_, float velY_, float masa_, float radio_, float K_, float e_,float AY_);
     ~cuerpo();
     float get_posX();
     float get_posY();

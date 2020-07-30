@@ -3,18 +3,17 @@
 
 
 
-cuerpograf::cuerpograf() : escala(1) //consrucyor
+cuerpograf::cuerpograf(float posx,float posy, float ay) : escala(1) //consrucyor
 {
-    float posx, posy, velx , vely ,r, mass, K, e;
-    posx = 32;
-    posy = 150;
-    r = 20;
+    float velx , vely ,r, mass, K, e, Ay;
+    r = 10;
+    Ay=ay
     mass = 50;
     velx = 0;
     vely = 0;
     K = 0.08;
     e = 0.15;
-    esf = new cuerpo(posx,posy,velx,vely,mass,r,K,e);
+    esf = new cuerpo(posx,posy,velx,vely,mass,r,K,e,Ay);
 }
 
 cuerpograf::~cuerpograf()//destructor
